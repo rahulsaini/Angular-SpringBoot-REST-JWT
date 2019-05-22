@@ -50,14 +50,14 @@ public class EmployeeController {
     @RequestMapping(value = "/employees", method = RequestMethod.POST, produces = {"application/json"})
     public OperationResponse addNewEmployee(@RequestBody Employee employee, HttpServletRequest req) {
         OperationResponse resp = new OperationResponse();
-        if (this.employeeRepo.exists(employee.getId()) ){
+        if (this.employeeRepo.existsById(employee.getId()) ){
             resp.setOperationStatus(ResponseStatusEnum.ERROR);
-            resp.setOperationMessage("Unable to add Employee - Employee allready exist ");
+            resp.setOperationMessage("Unable to add Employee - Employee already exist ");
         }
         else{
             Employee addedEmployee = this.employeeRepo.save(employee);
             resp.setOperationStatus(ResponseStatusEnum.SUCCESS);
-            resp.setOperationMessage("Employee Added");
+            resp.setOperationMessage("Employee Added with Id : " + addedEmployee.getId());
         }
         return resp;
     }
@@ -68,18 +68,18 @@ public class EmployeeController {
     public OperationResponse deleteEmployee(@PathVariable("employeeId") Integer employeeId, HttpServletRequest req) {
         OperationResponse resp = new OperationResponse();
         try {
-            if (this.employeeRepo.exists(employeeId) ){
-                this.employeeRepo.delete(employeeId);
+            if (this.employeeRepo.existsById(employeeId) ){
+                this.employeeRepo.deleteById(employeeId);
                 resp.setOperationStatus(ResponseStatusEnum.SUCCESS);
                 resp.setOperationMessage("Employee Deleted");
             }
             else{
                 resp.setOperationStatus(ResponseStatusEnum.ERROR);
-                resp.setOperationMessage("No Employee Exist");
+                resp.setOperationMessage("No such Employee Exist");
             }
         }
         catch ( Exception ge ){
-            System.out.println("========= MRIN GENERIC EXCEPTION ============");
+            System.out.println("========= GENERIC EXCEPTION ============");
             resp.setOperationStatus(ResponseStatusEnum.ERROR);
             resp.setOperationMessage(ge.getMessage());
         }

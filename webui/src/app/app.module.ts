@@ -17,7 +17,6 @@ import { AppRoutingModule } from './app-routing.module';
 // Directives
 import { TrackScrollDirective } from './directives/track_scroll/track_scroll.directive';
 
-
 // Components
 import { BadgeComponent  } from './components/badge/badge.component';
 import { LegendComponent } from './components/legend/legend.component';
@@ -37,7 +36,6 @@ import { OrdersComponent       } from './pages/orders/orders.component';
 import { OrderDetailsComponent } from './pages/order_details/order_details.component';
 import { EmployeesComponent    } from './pages/employees/employees.component';
 
-
 // Services
 import { AppConfig        } from './app-config';
 import { UserInfoService  } from './services/user-info.service';
@@ -50,7 +48,6 @@ import { ProductService   } from './services/api/product.service';
 import { CustomerService  } from './services/api/customer.service';
 import { EmployeeService  } from './services/api/employee.service';
 
-
 @NgModule({
 
   imports: [
@@ -60,14 +57,13 @@ import { EmployeeService  } from './services/api/employee.service';
     ReactiveFormsModule,
     HttpClientModule,
 
-    // Thirdparty Module
+    // Third-party Module
     NgxDatatableModule,
     NgxChartsModule,
     ClarityModule.forChild(),
 
     // Local App Modules
     AppRoutingModule
-
 
   ],
 

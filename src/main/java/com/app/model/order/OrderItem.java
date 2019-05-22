@@ -28,12 +28,12 @@ public class OrderItem  {
 
     public OrderItem(){}
 
-    //To Create orderitem by passing product_id and order_id as seperate variables
+    //To Create OrderItem by passing product_id and order_id as separate variables
     public OrderItem(int orderId, int productId, BigDecimal quantity, BigDecimal unitPrice, BigDecimal discount, String orderItemStatus, Date dateAllocated){
         this(new CompositeOrderProductKey(orderId, productId), quantity, unitPrice, discount, orderItemStatus, dateAllocated);
     }
 
-    //TO Create orderitem by passing Composite Key
+    //TO Create OrderItem by passing Composite Key
     public OrderItem(CompositeOrderProductKey orderItemKey, BigDecimal quantity, BigDecimal unitPrice, BigDecimal discount, String orderItemStatus, Date dateAllocated){
         this.orderItemKey = orderItemKey;
         this.quantity     = quantity;

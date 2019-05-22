@@ -12,7 +12,7 @@ public interface EmployeeRepo extends JpaRepository<Employee, Integer> {
     public Page<Employee> findAll(Pageable p);
     Employee save(Employee e);
     void delete(Employee e);
-    void delete(Integer id);
-    boolean exists( Integer id);
+    void deleteById(Integer id);
+    boolean existsById( Integer id);
 }
 

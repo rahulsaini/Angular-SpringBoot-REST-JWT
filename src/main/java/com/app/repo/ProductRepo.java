@@ -13,10 +13,10 @@ public interface ProductRepo extends JpaRepository<Product, Integer> {
     public Page<Product> findAll(Pageable p);
     Optional<Product> findOneById(Integer id);
 
-    //Product save(Product p);
-    //void delete(Product p) ;
+    Product save(Product p);
+    void delete(Product p) ;
     //void delete(Integer id);
-    //Product deleteById(Integer id);
-    //boolean exists( Integer id);
+    void deleteById(Integer id);
+    boolean existsById( Integer id);
 }
 

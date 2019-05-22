@@ -3,7 +3,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.3.RELEASE")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.1.5.RELEASE")
     }
 }
 
@@ -11,9 +11,10 @@ buildscript {
  * Include the gradle-download-task plugin
  */
 plugins {
-    id 'de.undercouch.download' version '3.2.0'
+    id 'de.undercouch.download' version '3.4.3'
+    id "io.spring.dependency-management" version "1.0.7.RELEASE"
 }
-import de.undercouch.gradle.tasks.download.Download
+//import de.undercouch.gradle.tasks.download.Download
 
 
 apply plugin: 'java'
@@ -68,12 +69,12 @@ task copyWebui(type: Copy) {
 }
 
 task downloadRedoc(type: Download) {
-    src  "https://rebilly.github.io/ReDoc/releases/latest/redoc.min.js"
+    src  "https://github.com/Rebilly/ReDoc/releases/tag/v2.0.0-rc.8"
     dest "${sourceSets.main.resources.srcDirs[0]}/public/redoc"
     overwrite true
 }
 
-task var << {
+/*task var {
 	sourceSets {
 		main {
 			println "java.srcDirs = ${java.srcDirs}"
@@ -82,7 +83,7 @@ task var << {
 			println "output.resourcesDir = ${output.resourcesDir}"
 		}
 	}
-}
+}*/
 
 
 compileJava.dependsOn downloadRedoc

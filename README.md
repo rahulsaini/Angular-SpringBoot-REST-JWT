@@ -2,11 +2,11 @@
 [![Backers on Open Collective](https://opencollective.com/angular-springboot-rest-jwt/backers/badge.svg)](#backers) [![Sponsors on Open Collective](https://opencollective.com/angular-springboot-rest-jwt/sponsors/badge.svg)](#sponsors)
 [![Build Status](https://travis-ci.org/mrin9/Angular-SpringBoot-REST-JWT.svg?branch=master)](https://travis-ci.org/mrin9/Angular-SpringBoot-REST-JWT)
 
-> Angular and SpringBoot both have way too much of magic, if you are one who like to be in controll of their code, then check > out my project on pure Java 11 (With Modules), Jersey and Vue.JS for UI
+> Angular and SpringBoot both have way too much of magic, if you are one who like to be in control of their code, then check > out my project on pure Java 11 (With Modules), Jersey and Vue.JS for UI
 > [WebApp with Java 11, Jersey and VueJS](https://github.com/mrin9/Modular-Java-Jersey-Vue)
 
 ## Angular 5+ Frontent with SpringBoot (Java) Backend
-Application to demonstrate various parts of a service oriented RESTfull application. 
+Application to demonstrate various parts of a service oriented RESTful application. 
 
 #### Heroku Hosted
 Allow couple of minutes to let the instance start
@@ -37,7 +37,7 @@ PROJECT_FOLDER
 │  └──[main]      
 │     └──[java]      
 │     └──[resources]
-│        │  application.properties #contains springboot cofigurations
+│        │  application.properties #contains springboot configurations
 │        │  schema.sql  # Contains DB Script to create tables that executes during the App Startup          
 │        │  data.sql    # Contains DB Script to Insert data that executes during the App Startup (after schema.sql)
 │        └──[public]    # keep all html,css etc, resources that needs to be exposed to user without security
@@ -65,10 +65,10 @@ Ensure you have this installed before proceeding further
 - Angular-cli 1.6.3
 
 ## About
-This is an RESTfull implementation of an order processing app based on Northwind database schema from Microsoft.
+This is an RESTful implementation of an order processing app based on Northwind database schema from Microsoft.
 The goal of the project is to 
 - Highlight techniques of making and securing a REST full app using [SpringBoot](https://projects.spring.io/spring-boot)
-- How to consume an RESTfull service and make an HTML5 based Single Page App using [Angular 4+](https://github.com/angular/angular)
+- How to consume an RESTful service and make an HTML5 based Single Page App using [Angular 4+](https://github.com/angular/angular)
 
 ### Features of the Project
 * Backend
@@ -80,25 +80,25 @@ The goal of the project is to
 
 * Frontend
   * Organizing Components, Services, Directives, Pages etc in an Angular App
-  * How to chain RxJS Observables (by making sequntial AJAX request- its different that how you do with promises)
+  * How to chain RxJS Observables (by making sequential AJAX request- its different that how you do with promises)
   * Techniques to Lazy load Data (Infinite Scroll)
   * Techniques to load large data set in a data-table but still keeping DOM footprint less
   * Routing and guarding pages that needs authentication
-  * Basic visulaization
+  * Basic visualization
 
 * Build
-  * How to build all in one app that includes (database, sample data, RESTfull API, Auto generated API Docs, frontend and security)
+  * How to build all in one app that includes (database, sample data, RESTful API, Auto generated API Docs, frontend and security)
   * Portable app, Ideal for dockers, cloud hosting.
 
 ## In Memory DB (H2)
-I have included an in-memory database for the application. Database schema and sample data for the app is created everytime the app starts, and gets destroyed after the app stops, so the changes made to to the database are persistent only as long as the app is running
+I have included an in-memory database for the application. Database schema and sample data for the app is created every time the app starts, and gets destroyed after the app stops, so the changes made to to the database are persistent only as long as the app is running
 <br/>
 Creation of database schema and data are done using sql scripts that Springs runs automatically. 
 To modify the database schema or the data you can modify [schema.sql](./src/main/resources/schema.sql) and [data.sql](./src/main/resources/data.sql) which can be found at `/src/main/resources`
 
 ## Spring security
 Security is **enabled** by default, to disable, you must comment [this line](./src/main/java/com/app/config/SecurityConfig.java#L15) in `src/main/java/com/config/SecurityConfig.java`<br/>
-When security is enabled, none of the REST API will be accessesble directly.
+When security is enabled, none of the REST API will be accessible directly.
 
 To test security access `http://localhost:9119/version` API and you should get a forbidden/Access denied error. 
 In order to access these secured API you must first obtain a token. Tokens can be obtained by passing a valid userid/password
@@ -108,7 +108,7 @@ couple of valid users and their passwords are `demo\demo` and `admin\admin`
 <br/>
 
 To get a token call `POST /session` API with a valid userid and password.
-for example you may you can use the folliwing curl command to get a token 
+for example you may you can use the following curl command to get a token 
 ```
 curl -X POST --header 'Content-Type: application/json' -d '{ "username":"demo", "password":"demo" }' 'http://localhost:9119/session'
 ```
@@ -123,7 +123,7 @@ curl -X GET --header 'Accept: application/json' --header 'Authorization: xxx.xxx
 ``` 
 
 ### Build Frontend (optional step)
-Code for frontend is allready compiled and saved under the ```webui/dist``` 
+Code for frontend is already compiled and saved under the ```webui/dist``` 
 when building the backend app (using maven) it will pickup the code from ```webui/dist```. However if you modified the frontend code and want your changes to get reflected then you must build the frontend 
 ```bash
 # Navigate to PROJECT_FOLDER/webui (should contain package.json )

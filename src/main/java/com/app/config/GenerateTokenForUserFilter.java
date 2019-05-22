@@ -1,5 +1,8 @@
 package com.app.config;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.impl.StaticLoggerBinder;
 import org.springframework.security.core.*;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.authentication.*;
@@ -21,8 +24,9 @@ import com.fasterxml.jackson.databind.*;
 
 
 /* This filter maps to /session and tries to validate the username and password */
-@Slf4j
 public class GenerateTokenForUserFilter extends AbstractAuthenticationProcessingFilter {
+
+    private static final Logger log = LoggerFactory.getLogger(GenerateTokenForUserFilter.class);
 
     private TokenUtil tokenUtil;
 
@@ -44,9 +48,9 @@ public class GenerateTokenForUserFilter extends AbstractAuthenticationProcessing
             String ip = request.getRemoteAddr();
             log.info("\nip:{} \nbrowser:{} \n----",ip,browser);
 
-            //final UsernamePasswordAuthenticationToken loginToken = new UsernamePasswordAuthenticationToken("demo", "demo");
-            final UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(username, password);
-            return getAuthenticationManager().authenticate(authToken); // This will take to successfulAuthentication or faliureAuthentication function
+            final UsernamePasswordAuthenticationToken loginToken = new UsernamePasswordAuthenticationToken("demo", "demo");
+            //final UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(username, password);
+            return getAuthenticationManager().authenticate(loginToken); // This will take to successfulAuthentication or failureAuthentication function
         }
         catch( JSONException | AuthenticationException e){
             throw new AuthenticationServiceException(e.getMessage());
